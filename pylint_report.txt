@@ -1,0 +1,24 @@
+************* Module inventory_system
+inventory_system.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+inventory_system.py:7:0: C0116: Missing function or method docstring (missing-function-docstring)
+inventory_system.py:7:0: C0103: Function name "addItem" doesn't conform to snake_case naming style (invalid-name)
+inventory_system.py:21:0: C0116: Missing function or method docstring (missing-function-docstring)
+inventory_system.py:21:0: C0103: Function name "removeItem" doesn't conform to snake_case naming style (invalid-name)
+inventory_system.py:29:0: C0116: Missing function or method docstring (missing-function-docstring)
+inventory_system.py:29:0: C0103: Function name "getQty" doesn't conform to snake_case naming style (invalid-name)
+inventory_system.py:32:0: C0116: Missing function or method docstring (missing-function-docstring)
+inventory_system.py:32:0: C0103: Function name "loadData" doesn't conform to snake_case naming style (invalid-name)
+inventory_system.py:33:4: W0603: Using the global statement (global-statement)
+inventory_system.py:35:13: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+inventory_system.py:41:0: C0116: Missing function or method docstring (missing-function-docstring)
+inventory_system.py:41:0: C0103: Function name "saveData" doesn't conform to snake_case naming style (invalid-name)
+inventory_system.py:42:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+inventory_system.py:45:0: C0116: Missing function or method docstring (missing-function-docstring)
+inventory_system.py:45:0: C0103: Function name "printData" doesn't conform to snake_case naming style (invalid-name)
+inventory_system.py:50:0: C0116: Missing function or method docstring (missing-function-docstring)
+inventory_system.py:50:0: C0103: Function name "checkLowItems" doesn't conform to snake_case naming style (invalid-name)
+inventory_system.py:57:0: C0116: Missing function or method docstring (missing-function-docstring)
+
+------------------------------------------------------------------
+Your code has been rated at 6.61/10 (previous run: 4.80/10, +1.81)
+
