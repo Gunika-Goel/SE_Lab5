@@ -1,37 +1,46 @@
 import json
-import logging
 from datetime import datetime
 
 # Global variable
 stock_data = {}
 
-def addItem(item="default", qty=0, logs=[]):
+def addItem(item="default", qty=0, logs=None):
+    if logs is None:
+        logs = []
+
+    # Type validation
+    if not isinstance(item, str) or not isinstance(qty, int):
+        raise ValueError("Item must be a string and qty must be an integer")
+
     if not item:
         return
+
     stock_data[item] = stock_data.get(item, 0) + qty
-    logs.append("%s: Added %d of %s" % (str(datetime.now()), qty, item))
+    logs.append(f"{datetime.now()}: Added {qty} of {item}")
 
 def removeItem(item, qty):
     try:
         stock_data[item] -= qty
         if stock_data[item] <= 0:
             del stock_data[item]
-    except:
-        pass
+    except KeyError:
+        print(f"{item} not found in stock")
 
 def getQty(item):
-    return stock_data[item]
+    return stock_data.get(item, 0)
 
 def loadData(file="inventory.json"):
-    f = open(file, "r")
     global stock_data
-    stock_data = json.loads(f.read())
-    f.close()
+    try:
+        with open(file, "r") as f:
+            stock_data = json.load(f)
+    except FileNotFoundError:
+        stock_data = {}
+        print(f"{file} not found, starting with empty stock.")
 
 def saveData(file="inventory.json"):
-    f = open(file, "w")
-    f.write(json.dumps(stock_data))
-    f.close()
+    with open(file, "w") as f:
+        json.dump(stock_data, f)
 
 def printData():
     print("Items Report")
@@ -48,7 +57,7 @@ def checkLowItems(threshold=5):
 def main():
     addItem("apple", 10)
     addItem("banana", -2)
-    addItem(123, "ten")  # invalid types, no check
+    addItem("orange", 5)  # fixed invalid types
     removeItem("apple", 3)
     removeItem("orange", 1)
     print("Apple stock:", getQty("apple"))
@@ -56,6 +65,8 @@ def main():
     saveData()
     loadData()
     printData()
-    eval("print('eval used')")  # dangerous
+    # eval removed for security
+    print("eval removed for safety")
 
-main()
+if __name__ == "__main__":
+    main()
